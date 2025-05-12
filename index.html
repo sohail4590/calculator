@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebTools - Your Online Utility Collection</title>
+    <meta name="description" content="Free online tools for developers, designers, and everyday tasks. Calculators, converters, generators and more.">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.25rem;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(63, 55, 201, 0.05));
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: var(--gray);
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1.75rem;
+            border-radius: 50px;
+            border: 1px solid var(--light-gray);
+            box-shadow: var(--card-shadow);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 1.15rem;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 4.5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.75rem;
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .tool-icon {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: var(--white);
+            padding: 1.75rem;
+            text-align: center;
+            font-size: 2.25rem;
+        }
+
+        .tool-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-content h3 {
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            font-size: 1.25rem;
+        }
+
+        .tool-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .tool-link {
+            margin-top: auto;
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .tool-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Ad Container */
+        .ad-container {
+            width: 100%;
+            margin: 2.5rem 0;
+            display: flex;
+            justify-content: center;
+            min-height: 120px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        .ad-placeholder {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3.5rem 2rem;
+            border-radius: 12px;
+            margin: 3.5rem 0;
+            text-align: center;
+            box-shadow: var(--hover-shadow);
+        }
+
+        .featured-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .featured-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn {
+            background-color: var(--whatsapp);
+            color: var(--white);
+            padding: 0.9rem 2.25rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: var(--whatsapp-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-column .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column .contact-item i {
+            margin-top: 3px;
+            color: var(--primary-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .tools-section {
+                padding: 3.5rem 0;
+            }
+
+            .featured-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .featured-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .featured-section {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .featured-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .whatsapp-btn {
+                padding: 0.8rem 1.75rem;
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tools logo-icon"></i>
+                <span class="logo-text">WebTools</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your Complete Online Toolkit</h1>
+            <p>Free web-based tools to simplify your work and daily tasks. No installation required, accessible from any device.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for tools...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Tools</h2>
+                <p>Browse our most frequently used utilities</p>
+            </div>
+            
+            <div class="tools-grid" id="tools-container">
+                <!-- Tools will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- AdSense Ad Unit -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="featured-section">
+            <i class="fab fa-whatsapp featured-icon"></i>
+            <h2>Need Help? Chat With Us</h2>
+            <p>Our team is available on WhatsApp to answer your questions and provide support for our tools.</p>
+            <a href="https://wa.me/yourphonenumber" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Message on WhatsApp
+            </a>
+        </div>
+
+        <!-- Second AdSense Ad Unit -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <section class="tools-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>All Tools</h2>
+                <p>Complete collection of our web utilities</p>
+            </div>
+            
+            <div class="tools-grid" id="all-tools-container">
+                <!-- All tools will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>WebTools</h3>
+                    <p>Your one-stop destination for free online utilities and tools to make your digital life easier.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/yourpage"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/yourhandle"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/yourprofile"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/yourrepo"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#tools">Tools</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Tool Categories</h3>
+                    <ul>
+                        <li><a href="calculators.html">Calculators</a></li>
+                        <li><a href="converters.html">Converters</a></li>
+                        <li><a href="generators.html">Generators</a></li>
+                        <li><a href="encoders.html">Encoders</a></li>
+                        <li><a href="formatters.html">Formatters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact@webtools.com">contact@webtools.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Tool Street, Digital City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> WebTools. All rights reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration - Edit this section to add/remove tools
+        const toolsConfig = {
+            siteName: "WebTools",
+            whatsappNumber: "1234567890", // Include country code without + sign
+            popularTools: [
+                {
+                    name: "GST Calculator",
+                    description: "Calculate GST amounts with multiple rate options and different calculation methods",
+                    icon: "fa-percentage",
+                    link: "gst-calculator.html"
+                },
+                {
+                    name: "Unit Converter",
+                    description: "Convert between different units of length, weight, volume, and more",
+                    icon: "fa-exchange-alt",
+                    link: "unit-converter.html"
+                },
+                {
+                    name: "Password Generator",
+                    description: "Create strong, secure passwords with customizable options",
+                    icon: "fa-key",
+                    link: "password-generator.html"
+                },
+                {
+                    name: "Color Picker",
+                    description: "Select, convert, and extract color values in multiple formats",
+                    icon: "fa-palette",
+                    link: "color-picker.html"
+                }
+            ],
+            allTools: [
+                {
+                    name: "GST Calculator",
+                    description: "Calculate GST amounts with multiple rate options and different calculation methods",
+                    icon: "fa-percentage",
+                    link: "gst-calculator.html"
+                },
+                {
+                    name: "Standard Calculator",
+                    description: "Basic arithmetic and scientific calculator functions",
+                    icon: "fa-calculator",
+                    link: "calculator.html"
+                },
+                {
+                    name: "Unit Converter",
+                    description: "Convert between different units of length, weight, volume, and more",
+                    icon: "fa-exchange-alt",
+                    link: "unit-converter.html"
+                },
+                {
+                    name: "Password Generator",
+                    description: "Create strong, secure passwords with customizable options",
+                    icon: "fa-key",
+                    link: "password-generator.html"
+                },
+                {
+                    name: "Color Picker",
+                    description: "Select, convert, and extract color values in multiple formats",
+                    icon: "fa-palette",
+                    link: "color-picker.html"
+                },
+                {
+                    name: "Text Analyzer",
+                    description: "Analyze and count words, characters, sentences, and reading time",
+                    icon: "fa-font",
+                    link: "text-analyzer.html"
+                },
+                {
+                    name: "QR Code Generator",
+                    description: "Create customizable QR codes for URLs, text, and contact information",
+                    icon: "fa-qrcode",
+                    link: "qr-generator.html"
+                },
+                {
+                    name: "Base64 Encoder",
+                    description: "Encode and decode Base64 strings for text and file data",
+                    icon: "fa-code",
+                    link: "base64-encoder.html"
+                },
+                {
+                    name: "JSON Formatter",
+                    description: "Validate, format, and beautify JSON data with syntax highlighting",
+                    icon: "fa-brackets-curly",
+                    link: "json-formatter.html"
+                },
+                {
+                    name: "Image Compressor",
+                    description: "Reduce image file size while maintaining quality",
+                    icon: "fa-file-image",
+                    link: "image-compressor.html"
+                }
+            ]
+        };
+
+        // Set site name in header and title
+        document.querySelector('.logo-text').textContent = toolsConfig.siteName;
+        document.title = toolsConfig.siteName + " - Your Online Utility Collection";
+
+        // Generate tool cards
+        function generateToolCards(tools, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            tools.forEach(tool => {
+                const toolCard = document.createElement('div');
+                toolCard.className = 'tool-card';
+                toolCard.innerHTML = `
+                    <a href="${tool.link}" class="tool-card-link" style="text-decoration: none; color: inherit;">
+                        <div class="tool-icon">
+                            <i class="fas ${tool.icon}"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h3>${tool.name}</h3>
+                            <p>${tool.description}</p>
+                            <span class="tool-link">Use Tool</span>
+                        </div>
+                    </a>
+                `;
+                container.appendChild(toolCard);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            generateToolCards(toolsConfig.popularTools, 'tools-container');
+            generateToolCards(toolsConfig.allTools, 'all-tools-container');
+            
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Update WhatsApp link
+            const whatsappBtn = document.querySelector('.whatsapp-btn');
+            whatsappBtn.href = `https://wa.me/${toolsConfig.whatsappNumber}`;
+            
+            // Initialize AdSense ads
+            if (typeof adsbygoogle !== 'undefined') {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }
+        });
+    </script>
+</body>
+</html>
