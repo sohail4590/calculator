@@ -253,6 +253,29 @@
             font-style: italic;
         }
         
+        .history-btn-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .history-btn {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .history-btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .history-hidden .page-container:not(:first-child) {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
@@ -358,6 +381,10 @@
             </form>
         </div>
         
+        <div class="history-btn-container">
+            <button id="historyBtn" class="history-btn">Hide History</button>
+        </div>
+        
         <div class="pages-container" id="pagesContainer">
             <!-- Daily pages will be added dynamically here -->
         </div>
@@ -374,13 +401,28 @@
             const quantityInput = document.getElementById('quantity');
             const priceInput = document.getElementById('price');
             const totalInput = document.getElementById('total');
+            const historyBtn = document.getElementById('historyBtn');
             
             let purchases = JSON.parse(localStorage.getItem('purchases')) || [];
             let editIndex = null;
+            let showHistory = true; // Start with history visible
             
             // Calculate total when quantity or price changes
             quantityInput.addEventListener('input', calculateTotal);
             priceInput.addEventListener('input', calculateTotal);
+            
+            // Toggle history visibility
+            historyBtn.addEventListener('click', function() {
+                showHistory = !showHistory;
+                pagesContainer.classList.toggle('history-hidden', !showHistory);
+                historyBtn.textContent = showHistory ? 'Hide History' : 'Show History';
+                
+                // Only show the button if there are multiple days of records
+                if (purchases.length > 0) {
+                    const uniqueDates = [...new Set(purchases.map(p => p.purchaseDate))];
+                    historyBtn.style.display = uniqueDates.length > 1 ? 'inline-block' : 'none';
+                }
+            });
             
             function calculateTotal() {
                 const quantity = parseFloat(quantityInput.value) || 0;
@@ -447,6 +489,7 @@
                 
                 if (purchases.length === 0) {
                     pagesContainer.innerHTML = '<div class="no-records">No purchase records found</div>';
+                    historyBtn.style.display = 'none';
                     return;
                 }
                 
@@ -514,6 +557,13 @@
                     
                     pagesContainer.appendChild(page);
                 });
+                
+                // Only show the history button if there are multiple days of records
+                const uniqueDates = [...new Set(purchases.map(p => p.purchaseDate))];
+                historyBtn.style.display = uniqueDates.length > 1 ? 'inline-block' : 'none';
+                
+                // Initially show all history (no .history-hidden class)
+                pagesContainer.classList.remove('history-hidden');
                 
                 // Add event listeners to edit and delete buttons
                 document.querySelectorAll('.edit-btn').forEach(btn => {
