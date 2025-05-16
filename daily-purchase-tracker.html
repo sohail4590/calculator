@@ -39,27 +39,6 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-        }
-        
-        .back-btn {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: var(--primary-light);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-        
-        .back-btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
         }
         
         header {
@@ -71,7 +50,6 @@
             box-shadow: var(--box-shadow);
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
-            margin-top: 2rem;
         }
         
         h1 {
@@ -303,12 +281,6 @@
                 padding: 1rem;
             }
             
-            .back-btn {
-                position: relative;
-                margin-bottom: 1rem;
-                display: inline-flex;
-            }
-            
             .form-group {
                 min-width: 100%;
             }
@@ -354,7 +326,7 @@
     </style>
 </head>
 <body>
-    <div class="container">        
+    <div class="container">
         <header>
             <h1>Daily Purchase Tracker</h1>
             <p class="subtitle">Records are automatically grouped by date</p>
