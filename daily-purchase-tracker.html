@@ -39,6 +39,28 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
         }
         
         header {
@@ -50,6 +72,7 @@
             box-shadow: var(--box-shadow);
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
+            margin-top: 2.5rem;
         }
         
         h1 {
@@ -281,6 +304,16 @@
                 padding: 1rem;
             }
             
+            .back-btn {
+                position: relative;
+                margin-bottom: 1rem;
+                display: inline-flex;
+            }
+            
+            header {
+                margin-top: 0;
+            }
+            
             .form-group {
                 min-width: 100%;
             }
@@ -327,6 +360,13 @@
 </head>
 <body>
     <div class="container">
+        <a href="javascript:history.back()" class="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Back
+        </a>
+        
         <header>
             <h1>Daily Purchase Tracker</h1>
             <p class="subtitle">Records are automatically grouped by date</p>
