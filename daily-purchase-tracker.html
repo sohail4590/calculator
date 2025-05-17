@@ -44,7 +44,7 @@
         
         .back-btn {
             position: absolute;
-            top: 0;
+            top: -0.5rem;
             left: 0;
             background-color: var(--primary-light);
             color: white;
@@ -72,7 +72,6 @@
             box-shadow: var(--box-shadow);
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
-            margin-top: 2.5rem;
         }
         
         h1 {
@@ -306,12 +305,9 @@
             
             .back-btn {
                 position: relative;
+                top: 0;
                 margin-bottom: 1rem;
                 display: inline-flex;
-            }
-            
-            header {
-                margin-top: 0;
             }
             
             .form-group {
@@ -398,11 +394,11 @@
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="price">Price per Unit (₹)</label>
+                        <label for="price">Price per Unit</label>
                         <input type="number" id="price" min="0" step="0.01" required placeholder="0.00">
                     </div>
                     <div class="form-group">
-                        <label for="total">Total (₹)</label>
+                        <label for="total">Total</label>
                         <input type="number" id="total" readonly class="currency">
                     </div>
                 </div>
@@ -565,8 +561,8 @@
                                         <th>Item</th>
                                         <th>Source</th>
                                         <th>Qty</th>
-                                        <th>Unit Price (₹)</th>
-                                        <th>Total (₹)</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
