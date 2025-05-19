@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yourdomain.com/calculator">
     
-    <title>Modern Web Calculator with Percentage | Free Online Calculation Tool</title>
+    <title>Web Calculator with Percentage | Free Online Calculation Tool</title>
     
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -92,7 +92,7 @@
             background: var(--calculator-bg);
             border-radius: 20px;
             box-shadow: var(--neumorphism-shadow);
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
@@ -120,7 +120,7 @@
             background-clip: text;
             color: transparent;
             font-size: 1.8rem;
-            margin: 2.5rem 0 1.5rem;
+            margin: 0 0 1.5rem 0;
             text-align: center;
             font-weight: 600;
         }
@@ -133,14 +133,21 @@
             width: 100%;
         }
         
+        .calculators-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
         .calculator-container, .percentage-container {
             background: var(--calculator-bg);
             border-radius: 25px;
             box-shadow: var(--neumorphism-shadow);
             overflow: hidden;
-            max-width: 400px;
-            margin: 0 auto 3rem;
+            width: 400px;
             transition: all 0.3s ease;
+            margin-bottom: 2rem;
         }
         
         .calculator-container:hover, .percentage-container:hover {
@@ -397,6 +404,18 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 900px) {
+            .calculators-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .calculator-container, .percentage-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
         @media (max-width: 500px) {
             body {
                 padding: 10px;
@@ -443,72 +462,74 @@
     </button>
     
     <header>
-        <h1>Modern Web Calculator</h1>
-        <p>A sleek, powerful calculator with percentage features</p>
+        <h1>Calculator</h1>
     </header>
     
     <div class="container">
-        <!-- Standard Calculator -->
-        <div class="calculator-container">
-            <div class="calculator-display">
-                <div class="previous-operand" id="previous-operand"></div>
-                <div class="current-operand" id="current-operand">0</div>
+        <div class="calculators-wrapper">
+            <!-- Standard Calculator -->
+            <div class="calculator-container">
+                <h2>Standard Calculator</h2>
+                <div class="calculator-display">
+                    <div class="previous-operand" id="previous-operand"></div>
+                    <div class="current-operand" id="current-operand">0</div>
+                </div>
+                <div class="calculator-buttons">
+                    <button class="clear span-2" onclick="clearAll()">AC</button>
+                    <button class="delete" onclick="deleteLastChar()">DEL</button>
+                    <button class="operator" onclick="appendOperator('/')">/</button>
+                    
+                    <button onclick="appendNumber('7')">7</button>
+                    <button onclick="appendNumber('8')">8</button>
+                    <button onclick="appendNumber('9')">9</button>
+                    <button class="operator" onclick="appendOperator('*')">×</button>
+                    
+                    <button onclick="appendNumber('4')">4</button>
+                    <button onclick="appendNumber('5')">5</button>
+                    <button onclick="appendNumber('6')">6</button>
+                    <button class="operator" onclick="appendOperator('-')">-</button>
+                    
+                    <button onclick="appendNumber('1')">1</button>
+                    <button onclick="appendNumber('2')">2</button>
+                    <button onclick="appendNumber('3')">3</button>
+                    <button class="operator" onclick="appendOperator('+')">+</button>
+                    
+                    <button onclick="appendNumber('0')">0</button>
+                    <button onclick="appendNumber('.')">.</button>
+                    <button class="equals span-2" onclick="calculate()">=</button>
+                </div>
             </div>
-            <div class="calculator-buttons">
-                <button class="clear span-2" onclick="clearAll()">AC</button>
-                <button class="delete" onclick="deleteLastChar()">DEL</button>
-                <button class="operator" onclick="appendOperator('/')">/</button>
-                
-                <button onclick="appendNumber('7')">7</button>
-                <button onclick="appendNumber('8')">8</button>
-                <button onclick="appendNumber('9')">9</button>
-                <button class="operator" onclick="appendOperator('*')">×</button>
-                
-                <button onclick="appendNumber('4')">4</button>
-                <button onclick="appendNumber('5')">5</button>
-                <button onclick="appendNumber('6')">6</button>
-                <button class="operator" onclick="appendOperator('-')">-</button>
-                
-                <button onclick="appendNumber('1')">1</button>
-                <button onclick="appendNumber('2')">2</button>
-                <button onclick="appendNumber('3')">3</button>
-                <button class="operator" onclick="appendOperator('+')">+</button>
-                
-                <button onclick="appendNumber('0')">0</button>
-                <button onclick="appendNumber('.')">.</button>
-                <button class="equals span-2" onclick="calculate()">=</button>
-            </div>
-        </div>
-        
-        <!-- Percentage Calculator -->
-        <h2>Percentage Calculator</h2>
-        <div class="percentage-container">
-            <div class="percentage-form">
-                <div class="form-group">
-                    <label for="amount">Amount (₹)</label>
-                    <input type="number" id="amount" placeholder="Enter amount in rupees" class="percentage-input">
-                </div>
-                
-                <div class="form-group">
-                    <label for="percentage">Percentage</label>
-                    <input type="number" id="percentage" placeholder="Enter percentage" class="percentage-input">
-                </div>
-                
-                <button class="percentage-btn" onclick="calculatePercentage()">Calculate Percentage</button>
-                
-                <div class="percentage-results" id="percentage-results">
-                    <div class="percentage-result-item">
-                        <span>Percentage Amount:</span>
-                        <span id="percentage-amount">₹0.00</span>
+            
+            <!-- Percentage Calculator -->
+            <div class="percentage-container">
+                <h2>Percentage Calculator</h2>
+                <div class="percentage-form">
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" placeholder="Enter amount in rupees" class="percentage-input">
                     </div>
-                    <div class="percentage-result-item">
-                        <span>Total Amount:</span>
-                        <span id="total-with-percentage">₹0.00</span>
+                    
+                    <div class="form-group">
+                        <label for="percentage">Percentage</label>
+                        <input type="number" id="percentage" placeholder="Enter percentage" class="percentage-input">
                     </div>
+                    
+                    <button class="percentage-btn" onclick="calculatePercentage()">Calculate Percentage</button>
+                    
+                    <div class="percentage-results" id="percentage-results">
+                        <div class="percentage-result-item">
+                            <span>Percentage Amount:</span>
+                            <span id="percentage-amount">₹0.00</span>
+                        </div>
+                        <div class="percentage-result-item">
+                            <span>Total Amount:</span>
+                            <span id="total-with-percentage">₹0.00</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Clear Button for Percentage Calculator -->
+                    <button class="clear-percentage" onclick="clearPercentageCalculator()">Clear</button>
                 </div>
-                
-                <!-- Clear Button for Percentage Calculator -->
-                <button class="clear-percentage" onclick="clearPercentageCalculator()">Clear</button>
             </div>
         </div>
     </div>
@@ -717,8 +738,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Modern Web Calculator with Percentage",
-        "description": "A sleek, responsive calculator with percentage calculation that works on all devices.",
+        "name": "Web Calculator with Percentage",
+        "description": "A responsive calculator with percentage calculation that works on all devices.",
         "url": "https://yourdomain.com/calculator",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Web Browser",
