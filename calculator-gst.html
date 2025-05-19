@@ -3,25 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully responsive calculator with percentage calculation functionality. Perfect for quick calculations on any device.">
-    <meta name="keywords" content="calculator, percentage calculator, online calculator, math tool, responsive calculator, web calculator">
+    <meta name="description" content="A fully responsive calculator with percentage calculation functionality.">
+    <meta name="keywords" content="calculator, percentage calculator, online calculator, math tool">
     <meta name="author" content="Calculator Tools">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yourdomain.com/calculator">
     
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Responsive Web Calculator with Percentage">
-    <meta property="og:description" content="A fully responsive calculator with percentage calculation that works on all devices.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/calculator">
-    
-    <title>Web Calculator with Percentage | Free Online Calculation Tool</title>
+    <title>Web Calculator | Free Online Calculation Tool</title>
     
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -30,13 +22,13 @@
             --accent-color: #fd79a8;
             --text-color: #2d3436;
             --light-text: #636e72;
-            --button-hover: #dfe6e9;
+            --button-hover: #e8eaed;
             --percentage-color: #00b894;
             --calculator-bg: linear-gradient(145deg, #ffffff, #f1f2f6);
             --display-bg: linear-gradient(145deg, #2d3436, #1e272e);
-            --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --neumorphism-shadow: 8px 8px 15px #d1d9e6, -8px -8px 15px #ffffff;
-            --neumorphism-inset: inset 3px 3px 5px #d1d9e6, inset -3px -3px 5px #ffffff;
+            --button-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            --neumorphism-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+            --neumorphism-inset: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #ffffff;
         }
         
         * {
@@ -49,59 +41,48 @@
         body {
             background-color: #f5f6fa;
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.5;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
         }
         
         .back-button {
             position: absolute;
-            top: 30px;
-            left: 30px;
+            top: 20px;
+            left: 20px;
             background: var(--calculator-bg);
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             box-shadow: var(--neumorphism-shadow);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             z-index: 10;
         }
         
         .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .back-button:active {
-            box-shadow: var(--neumorphism-inset);
+            transform: translateY(-2px);
         }
         
         .back-button i {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--primary-color);
         }
         
         header {
             background: var(--calculator-bg);
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: var(--neumorphism-shadow);
-            padding: 1rem;
+            padding: 0.8rem;
             text-align: center;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        header:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
         }
         
         h1 {
@@ -109,9 +90,8 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
         
         h2 {
@@ -119,16 +99,15 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 1.8rem;
-            margin: 0 0 1.5rem 0;
-            text-align: center;
+            font-size: 1.3rem;
+            margin: 0 0 1rem 0;
             font-weight: 600;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 0.8rem;
             flex: 1;
             width: 100%;
         }
@@ -136,38 +115,35 @@
         .calculators-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
         }
         
         .calculator-container, .percentage-container {
             background: var(--calculator-bg);
-            border-radius: 25px;
+            border-radius: 18px;
             box-shadow: var(--neumorphism-shadow);
             overflow: hidden;
-            width: 400px;
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
+            width: 320px;
+            transition: all 0.2s ease;
         }
         
         .calculator-container:hover, .percentage-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
         }
         
         .calculator-display {
             background: var(--display-bg);
             color: white;
-            padding: 1.8rem;
+            padding: 1.2rem;
             text-align: right;
-            font-size: 2.5rem;
-            min-height: 120px;
+            font-size: 1.8rem;
+            min-height: 90px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            border-radius: 20px 20px 0 0;
+            border-radius: 15px 15px 0 0;
             position: relative;
-            overflow: hidden;
         }
         
         .calculator-display::after {
@@ -176,14 +152,14 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(to right, var(--primary-color), var(--accent-color));
         }
         
         .previous-operand {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             color: rgba(255,255,255,0.7);
-            min-height: 1.8rem;
+            min-height: 1.2rem;
             word-break: break-all;
             font-weight: 300;
         }
@@ -191,49 +167,35 @@
         .current-operand {
             word-break: break-all;
             font-weight: 500;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
         
         .calculator-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            padding: 20px;
+            gap: 8px;
+            padding: 15px;
             background: var(--calculator-bg);
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 15px 15px;
         }
         
         button {
             border: none;
             outline: none;
             background: var(--calculator-bg);
-            padding: 1.2rem 0;
-            font-size: 1.3rem;
+            padding: 0.8rem 0;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s;
-            border-radius: 15px;
+            transition: all 0.15s;
+            border-radius: 12px;
             box-shadow: var(--button-shadow);
             color: var(--text-color);
             font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
-            opacity: 0;
-            transition: opacity 0.3s;
         }
         
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         button:active {
@@ -241,20 +203,16 @@
             box-shadow: var(--neumorphism-inset);
         }
         
-        button:hover::before {
-            opacity: 1;
-        }
-        
         .operator {
             background: linear-gradient(145deg, #f1f2f6, #ffffff);
             color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .equals {
             background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             color: white;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .equals:hover {
@@ -263,7 +221,6 @@
         
         .clear, .delete {
             color: #ff7675;
-            font-weight: 600;
         }
         
         .span-2 {
@@ -272,89 +229,75 @@
         
         /* Percentage Calculator Styles */
         .percentage-form {
-            padding: 2rem;
+            padding: 1.5rem;
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
+            margin-bottom: 1rem;
         }
         
         label {
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--light-text);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         input {
             width: 100%;
-            padding: 1rem;
+            padding: 0.7rem;
             border: none;
-            border-radius: 15px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
             background: var(--calculator-bg);
             box-shadow: var(--neumorphism-inset);
             color: var(--text-color);
             font-weight: 500;
-            transition: all 0.3s;
         }
         
         input:focus {
             outline: none;
-            box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
-        }
-        
-        input::placeholder {
-            color: #b2bec3;
-            font-weight: 400;
+            box-shadow: inset 1px 1px 3px #d1d9e6, inset -1px -1px 3px #ffffff;
         }
         
         .percentage-btn {
             background: linear-gradient(to right, var(--percentage-color), #55efc4);
             color: white;
             border: none;
-            padding: 1.2rem;
+            padding: 0.9rem;
             width: 100%;
-            font-size: 1.2rem;
-            border-radius: 15px;
+            font-size: 1rem;
+            border-radius: 12px;
             cursor: pointer;
-            margin-top: 1.5rem;
-            transition: all 0.3s;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
-            position: relative;
-            overflow: hidden;
+            margin-top: 1rem;
+            transition: all 0.2s;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0, 184, 148, 0.2);
         }
         
         .percentage-btn:hover {
             background: linear-gradient(to right, #00a884, #00d2b3);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(0, 184, 148, 0.4);
-        }
-        
-        .percentage-btn:active {
-            transform: translateY(1px);
+            transform: translateY(-2px);
         }
         
         .percentage-results {
-            margin-top: 2rem;
-            padding: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
             background: var(--calculator-bg);
-            border-radius: 15px;
+            border-radius: 12px;
             box-shadow: var(--neumorphism-inset);
             display: none;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         
         .percentage-result-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid #dfe6e9;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
         
         .percentage-result-item:last-child {
@@ -363,56 +306,52 @@
             padding-bottom: 0;
             font-weight: bold;
             color: var(--percentage-color);
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         
         .clear-percentage {
             background: linear-gradient(to right, #ff7675, #fd79a8);
             color: white;
             border: none;
-            padding: 1rem;
+            padding: 0.8rem;
             width: 100%;
-            font-size: 1.1rem;
-            border-radius: 15px;
+            font-size: 0.9rem;
+            border-radius: 12px;
             cursor: pointer;
-            margin-top: 1rem;
-            transition: all 0.3s;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 118, 117, 0.3);
+            margin-top: 0.8rem;
+            transition: all 0.2s;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(255, 118, 117, 0.2);
         }
         
         .clear-percentage:hover {
             background: linear-gradient(to right, #e84393, #fd79a8);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(255, 118, 117, 0.4);
-        }
-        
-        .clear-percentage:active {
-            transform: translateY(1px);
+            transform: translateY(-2px);
         }
         
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
         
         /* Responsive Design */
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
             .calculators-wrapper {
                 flex-direction: column;
                 align-items: center;
+                gap: 1.2rem;
             }
             
             .calculator-container, .percentage-container {
                 width: 100%;
-                max-width: 400px;
+                max-width: 320px;
             }
         }
         
@@ -422,33 +361,33 @@
             }
             
             .back-button {
-                top: 20px;
-                left: 20px;
-                width: 40px;
-                height: 40px;
+                top: 15px;
+                left: 15px;
+                width: 36px;
+                height: 36px;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
             }
             
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.1rem;
             }
             
             .calculator-display {
-                padding: 1.5rem;
-                font-size: 2rem;
-                min-height: 100px;
+                padding: 1rem;
+                font-size: 1.5rem;
+                min-height: 80px;
             }
             
             button {
-                padding: 1rem 0;
-                font-size: 1.2rem;
+                padding: 0.7rem 0;
+                font-size: 0.9rem;
             }
             
             .percentage-form {
-                padding: 1.5rem;
+                padding: 1.2rem;
             }
         }
     </style>
@@ -506,7 +445,7 @@
                 <div class="percentage-form">
                     <div class="form-group">
                         <label for="amount">Amount (₹)</label>
-                        <input type="number" id="amount" placeholder="Enter amount in rupees" class="percentage-input">
+                        <input type="number" id="amount" placeholder="Enter amount" class="percentage-input">
                     </div>
                     
                     <div class="form-group">
@@ -514,7 +453,7 @@
                         <input type="number" id="percentage" placeholder="Enter percentage" class="percentage-input">
                     </div>
                     
-                    <button class="percentage-btn" onclick="calculatePercentage()">Calculate Percentage</button>
+                    <button class="percentage-btn" onclick="calculatePercentage()">Calculate</button>
                     
                     <div class="percentage-results" id="percentage-results">
                         <div class="percentage-result-item">
@@ -527,7 +466,6 @@
                         </div>
                     </div>
                     
-                    <!-- Clear Button for Percentage Calculator -->
                     <button class="clear-percentage" onclick="clearPercentageCalculator()">Clear</button>
                 </div>
             </div>
@@ -561,11 +499,10 @@
             if (number === '.' && currentOperand.includes('.')) return;
             currentOperand += number;
             
-            // Add animation to the display
-            currentOperandElement.style.transform = 'scale(1.05)';
+            currentOperandElement.style.transform = 'scale(1.03)';
             setTimeout(() => {
                 currentOperandElement.style.transform = 'scale(1)';
-            }, 100);
+            }, 80);
             
             updateDisplay();
         }
@@ -613,11 +550,10 @@
             previousOperand = '';
             resetScreen = true;
             
-            // Add celebration animation to the display
-            currentOperandElement.style.animation = 'pulse 0.5s';
+            currentOperandElement.style.animation = 'pulse 0.3s';
             setTimeout(() => {
                 currentOperandElement.style.animation = '';
-            }, 500);
+            }, 300);
             
             updateDisplay();
         }
@@ -628,11 +564,10 @@
             previousOperand = '';
             operation = undefined;
             
-            // Add animation to the display
-            currentOperandElement.style.transform = 'scale(0.9)';
+            currentOperandElement.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 currentOperandElement.style.transform = 'scale(1)';
-            }, 100);
+            }, 80);
             
             updateDisplay();
         }
@@ -645,11 +580,10 @@
                 currentOperand = currentOperand.slice(0, -1);
             }
             
-            // Add animation to the display
-            currentOperandElement.style.transform = 'scale(0.95)';
+            currentOperandElement.style.transform = 'scale(0.97)';
             setTimeout(() => {
                 currentOperandElement.style.transform = 'scale(1)';
-            }, 100);
+            }, 80);
             
             updateDisplay();
         }
@@ -662,30 +596,25 @@
             const amount = parseFloat(amountInput);
             const percentage = parseFloat(percentageInput);
             
-            // Validate inputs
             if (isNaN(amount)) {
-                showError('Please enter a valid amount');
+                showError('Enter valid amount');
                 return;
             }
             
             if (isNaN(percentage)) {
-                showError('Please enter a valid percentage');
+                showError('Enter valid percentage');
                 return;
             }
             
             const percentageAmount = (amount * percentage) / 100;
             const totalWithPercentage = amount + percentageAmount;
             
-            // Display results in Indian Rupees
             document.getElementById('percentage-amount').textContent = '₹' + percentageAmount.toFixed(2);
             document.getElementById('total-with-percentage').textContent = '₹' + totalWithPercentage.toFixed(2);
             
-            // Show results with animation
             const resultsElement = document.getElementById('percentage-results');
             resultsElement.style.display = 'block';
-            
-            // Add animation
-            resultsElement.style.animation = 'fadeIn 0.5s ease-out';
+            resultsElement.style.animation = 'fadeIn 0.3s ease-out';
         }
         
         // Clear Percentage Calculator
@@ -701,17 +630,16 @@
             btn.style.background = 'linear-gradient(to right, #ff7675, #fd79a8)';
             
             setTimeout(() => {
-                btn.textContent = 'Calculate Percentage';
+                btn.textContent = 'Calculate';
                 btn.style.background = 'linear-gradient(to right, var(--percentage-color), #55efc4)';
-            }, 2000);
+            }, 1500);
         }
         
         // Keyboard support for standard calculator
         function handleCalculatorKeys(e) {
-            // Check if the focused element is a percentage calculator input
             const activeElement = document.activeElement;
             if (activeElement.classList.contains('percentage-input')) {
-                return; // Skip calculator keyboard handling for percentage inputs
+                return;
             }
             
             if (e.key >= '0' && e.key <= '9') appendNumber(e.key);
@@ -731,24 +659,6 @@
         
         // Initialize displays
         updateDisplay();
-    </script>
-    
-    <!-- Structured data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Web Calculator with Percentage",
-        "description": "A responsive calculator with percentage calculation that works on all devices.",
-        "url": "https://yourdomain.com/calculator",
-        "applicationCategory": "UtilityApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "INR"
-        }
-    }
     </script>
 </body>
 </html>
